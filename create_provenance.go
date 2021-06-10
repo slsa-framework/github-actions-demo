@@ -30,7 +30,7 @@ type Statement struct {
 	Type          string    `json:"_type"`
 	Subject       []Subject `json:"subject"`
 	PredicateType string    `json:"predicateType"`
-	Predicate     `json:"stmt.Predicate"`
+	Predicate     `json:"predicate"`
 }
 type Subject struct {
 	Name   string

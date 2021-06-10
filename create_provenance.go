@@ -193,15 +193,13 @@ func main() {
 	}
 
 	context := AnyContext{}
-	if err := json.Unmarshal([]byte(*githubContext), &context); err != nil {
+	if err := json.Unmarshal([]byte(*githubContext), &context.GitHubContext); err != nil {
 		panic(err)
 	}
-	if err := json.Unmarshal([]byte(*runnerContext), &context); err != nil {
+	if err := json.Unmarshal([]byte(*runnerContext), &context.RunnerContext); err != nil {
 		panic(err)
 	}
 	gh := context.GitHubContext
-	token := gh.Token
-	fmt.Println(token)
 	// Remove access token from the generated provenance.
 	context.GitHubContext.Token = ""
 	// NOTE: Re-runs are not uniquely identified and can cause run ID collisions.

@@ -1,0 +1,30 @@
+name: 'Build Provenance Action'
+description: 'Generate build provenance for an artifact'
+inputs:
+  artifact_path:
+    description: 'path to artifact or directory of artifacts'
+    required: true
+  output_path:
+    description: 'path to write build provenance file'
+    required: true
+    default: 'build.provenance'
+  github_context:
+    description: 'internal (do not set): the "github" context object in json'
+    required: true
+    default: ${{ toJSON(github) }}
+  runner_context:
+    description: 'internal (do not set): the "runner" context object in json'
+    required: true
+    default: ${{ toJSON(runner) }}
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - "--artifact_path"
+    - '${{ inputs.artifact_path }}'
+    - "--output_path"
+    - '${{ inputs.output_path }}'
+    - "--github_context"
+    - '${{ inputs.github_context }}'
+    - "--runner_context"
+    - '${{ inputs.runner_context }}'

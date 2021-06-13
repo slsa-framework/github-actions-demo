@@ -1,5 +1,5 @@
-name: 'SLSA 1 Build Provenance Action (Demo)'
-description: 'A POC Demo Action to generate SLSA 1 build provenance for an artifact'
+name: 'SLSA Build Provenance Action (Demo)'
+description: 'A POC Demo Action to generate SLSA build provenance for an artifact'
 branding:
   icon: lock
   color: purple

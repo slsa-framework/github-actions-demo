@@ -47,7 +47,7 @@ Actions workflow:
 
 ```
       - name: Generate provenance
-        uses: salsa-framework/github-actions-demo@v0.1
+        uses: slsa-framework/github-actions-demo@v0.1
         with:
           artifact_path: <path-to-artifact>
 ```

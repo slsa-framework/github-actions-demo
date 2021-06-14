@@ -1,27 +1,27 @@
 {
-    "_type": "https://in-toto.io/statement/v0.1",
+    "_type": "https://in-toto.io/Statement/v0.1",
     "subject": [
       {
-        "Name": "salsa.txt",
-        "Digest": {
+        "name": "salsa.txt",
+        "digest": {
           "sha256": "f8161d035cdf328c7bb124fce192cb90b603f34ca78d73e33b736b4f6bddf993"
         }
       }
     ],
-    "predicateType": "https://in-toto.io/provenance/v0.1",
+    "predicateType": "https://in-toto.io/Provenance/v0.1",
     "predicate": {
       "builder": {
-        "id": "https://github.com/Attestations/GitHubHostedActions@v1"
+        "id": "https://github.com/slsa-framework/github-actions-demo/Attestations/GitHubHostedActions@v1"
       },
       "metadata": {
-        "buildInvocationId": "936659519",
+        "buildInvocationId": "https://github.com/slsa-framework/github-actions-demo/actions/runs/937294495",
         "completeness": {
           "arguments": true,
           "environment": true,
           "materials": false
         },
         "reproducible": false,
-        "buildFinishedOn": "2021-06-14T17:45:22Z"
+        "buildFinishedOn": "2021-06-14T21:53:27Z"
       },
       "recipe": {
         "type": "https://github.com/Attestations/GitHubActionsWorkflow@v1",
@@ -109,8 +109,8 @@
                 "name": "github-actions-demo",
                 "node_id": "MDEwOlJlcG9zaXRvcnkzNzUxNDg3NDY=",
                 "notifications_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/notifications{?since,all,participating}",
-                "open_issues": 0,
-                "open_issues_count": 0,
+                "open_issues": 1,
+                "open_issues_count": 1,
                 "owner": {
                   "avatar_url": "https://avatars.githubusercontent.com/u/80431187?v=4",
                   "events_url": "https://api.github.com/users/slsa-framework/events{/privacy}",
@@ -133,9 +133,9 @@
                 },
                 "private": false,
                 "pulls_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/pulls{/number}",
-                "pushed_at": "2021-06-14T17:44:24Z",
+                "pushed_at": "2021-06-14T21:52:22Z",
                 "releases_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/releases{/id}",
-                "size": 15,
+                "size": 34,
                 "ssh_url": "git@github.com:slsa-framework/github-actions-demo.git",
                 "stargazers_count": 0,
                 "stargazers_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/stargazers",
@@ -146,7 +146,7 @@
                 "tags_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/tags",
                 "teams_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/teams",
                 "trees_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/git/trees{/sha}",
-                "updated_at": "2021-06-14T17:44:26Z",
+                "updated_at": "2021-06-14T21:46:49Z",
                 "url": "https://api.github.com/repos/slsa-framework/github-actions-demo",
                 "watchers": 0,
                 "watchers_count": 0
@@ -180,9 +180,9 @@
             "ref": "refs/heads/main",
             "repository": "slsa-framework/github-actions-demo",
             "repository_owner": "slsa-framework",
-            "run_id": "936659519",
-            "run_number": "2",
-            "sha": "2b67dfb4e7b0bd04977d975afdafe0c76138aa1b",
+            "run_id": "937294495",
+            "run_number": "3",
+            "sha": "c825e05bfd2b1611f69e91e4d0ae7fbe0e673ec2",
             "workflow": "Create a sample provenance",
             "workspace": "/home/runner/work/github-actions-demo/github-actions-demo"
           },
@@ -195,9 +195,9 @@
       },
       "materials": [
         {
-          "uri": "https://github.com/slsa-framework/github-actions-demo",
+          "uri": "git+https://github.com/slsa-framework/github-actions-demo",
           "digest": {
-            "sha1": "2b67dfb4e7b0bd04977d975afdafe0c76138aa1b"
+            "sha1": "c825e05bfd2b1611f69e91e4d0ae7fbe0e673ec2"
           }
         }
       ]

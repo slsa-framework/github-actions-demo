@@ -30,8 +30,8 @@ such, we cannot make any commitments of future support.
 
 ## Example
 
-To see an example of the action... in action, see the [example](https://github.com/slsa-framework/github-actions-demo/blob/main/.github/workflows/example-publish.yml)
-in this repository.
+To see an example of the action... in action, see the [example action](https://github.com/slsa-framework/github-actions-demo/blob/main/.github/workflows/example-publish.yml)
+and [example provenance](https://github.com/slsa-framework/github-actions-demo/blob/main/examples/build.provenance) in this repository.
 
 ## Usage
 

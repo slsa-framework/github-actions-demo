@@ -1,0 +1,205 @@
+{
+    "_type": "https://in-toto.io/statement/v0.1",
+    "subject": [
+      {
+        "Name": "salsa.txt",
+        "Digest": {
+          "sha256": "f8161d035cdf328c7bb124fce192cb90b603f34ca78d73e33b736b4f6bddf993"
+        }
+      }
+    ],
+    "predicateType": "https://in-toto.io/provenance/v0.1",
+    "predicate": {
+      "builder": {
+        "id": "https://github.com/Attestations/GitHubHostedActions@v1"
+      },
+      "metadata": {
+        "buildInvocationId": "936659519",
+        "completeness": {
+          "arguments": true,
+          "environment": true,
+          "materials": false
+        },
+        "reproducible": false,
+        "buildFinishedOn": "2021-06-14T17:45:22Z"
+      },
+      "recipe": {
+        "type": "https://github.com/Attestations/GitHubActionsWorkflow@v1",
+        "definedInMaterial": 0,
+        "entryPoint": "Create a sample provenance",
+        "arguments": null,
+        "environment": {
+          "github": {
+            "action": "slsa-frameworkgithub-actions-demo",
+            "action_path": "",
+            "actor": "loosebazooka",
+            "base_ref": "",
+            "event": {
+              "inputs": null,
+              "organization": {
+                "avatar_url": "https://avatars.githubusercontent.com/u/80431187?v=4",
+                "description": "Supply-chain Levels for Software Artifacts",
+                "events_url": "https://api.github.com/orgs/slsa-framework/events",
+                "hooks_url": "https://api.github.com/orgs/slsa-framework/hooks",
+                "id": 80431187,
+                "issues_url": "https://api.github.com/orgs/slsa-framework/issues",
+                "login": "slsa-framework",
+                "members_url": "https://api.github.com/orgs/slsa-framework/members{/member}",
+                "node_id": "MDEyOk9yZ2FuaXphdGlvbjgwNDMxMTg3",
+                "public_members_url": "https://api.github.com/orgs/slsa-framework/public_members{/member}",
+                "repos_url": "https://api.github.com/orgs/slsa-framework/repos",
+                "url": "https://api.github.com/orgs/slsa-framework"
+              },
+              "ref": "refs/heads/main",
+              "repository": {
+                "archive_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/{archive_format}{/ref}",
+                "archived": false,
+                "assignees_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/assignees{/user}",
+                "blobs_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/git/blobs{/sha}",
+                "branches_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/branches{/branch}",
+                "clone_url": "https://github.com/slsa-framework/github-actions-demo.git",
+                "collaborators_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/collaborators{/collaborator}",
+                "comments_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/comments{/number}",
+                "commits_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/commits{/sha}",
+                "compare_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/compare/{base}...{head}",
+                "contents_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/contents/{+path}",
+                "contributors_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/contributors",
+                "created_at": "2021-06-08T21:21:47Z",
+                "default_branch": "main",
+                "deployments_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/deployments",
+                "description": null,
+                "disabled": false,
+                "downloads_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/downloads",
+                "events_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/events",
+                "fork": false,
+                "forks": 0,
+                "forks_count": 0,
+                "forks_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/forks",
+                "full_name": "slsa-framework/github-actions-demo",
+                "git_commits_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/git/commits{/sha}",
+                "git_refs_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/git/refs{/sha}",
+                "git_tags_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/git/tags{/sha}",
+                "git_url": "git://github.com/slsa-framework/github-actions-demo.git",
+                "has_downloads": true,
+                "has_issues": true,
+                "has_pages": false,
+                "has_projects": true,
+                "has_wiki": true,
+                "homepage": null,
+                "hooks_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/hooks",
+                "html_url": "https://github.com/slsa-framework/github-actions-demo",
+                "id": 375148746,
+                "issue_comment_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/issues/comments{/number}",
+                "issue_events_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/issues/events{/number}",
+                "issues_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/issues{/number}",
+                "keys_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/keys{/key_id}",
+                "labels_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/labels{/name}",
+                "language": "Go",
+                "languages_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/languages",
+                "license": {
+                  "key": "mit",
+                  "name": "MIT License",
+                  "node_id": "MDc6TGljZW5zZTEz",
+                  "spdx_id": "MIT",
+                  "url": "https://api.github.com/licenses/mit"
+                },
+                "merges_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/merges",
+                "milestones_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/milestones{/number}",
+                "mirror_url": null,
+                "name": "github-actions-demo",
+                "node_id": "MDEwOlJlcG9zaXRvcnkzNzUxNDg3NDY=",
+                "notifications_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/notifications{?since,all,participating}",
+                "open_issues": 0,
+                "open_issues_count": 0,
+                "owner": {
+                  "avatar_url": "https://avatars.githubusercontent.com/u/80431187?v=4",
+                  "events_url": "https://api.github.com/users/slsa-framework/events{/privacy}",
+                  "followers_url": "https://api.github.com/users/slsa-framework/followers",
+                  "following_url": "https://api.github.com/users/slsa-framework/following{/other_user}",
+                  "gists_url": "https://api.github.com/users/slsa-framework/gists{/gist_id}",
+                  "gravatar_id": "",
+                  "html_url": "https://github.com/slsa-framework",
+                  "id": 80431187,
+                  "login": "slsa-framework",
+                  "node_id": "MDEyOk9yZ2FuaXphdGlvbjgwNDMxMTg3",
+                  "organizations_url": "https://api.github.com/users/slsa-framework/orgs",
+                  "received_events_url": "https://api.github.com/users/slsa-framework/received_events",
+                  "repos_url": "https://api.github.com/users/slsa-framework/repos",
+                  "site_admin": false,
+                  "starred_url": "https://api.github.com/users/slsa-framework/starred{/owner}{/repo}",
+                  "subscriptions_url": "https://api.github.com/users/slsa-framework/subscriptions",
+                  "type": "Organization",
+                  "url": "https://api.github.com/users/slsa-framework"
+                },
+                "private": false,
+                "pulls_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/pulls{/number}",
+                "pushed_at": "2021-06-14T17:44:24Z",
+                "releases_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/releases{/id}",
+                "size": 15,
+                "ssh_url": "git@github.com:slsa-framework/github-actions-demo.git",
+                "stargazers_count": 0,
+                "stargazers_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/stargazers",
+                "statuses_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/statuses/{sha}",
+                "subscribers_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/subscribers",
+                "subscription_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/subscription",
+                "svn_url": "https://github.com/slsa-framework/github-actions-demo",
+                "tags_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/tags",
+                "teams_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/teams",
+                "trees_url": "https://api.github.com/repos/slsa-framework/github-actions-demo/git/trees{/sha}",
+                "updated_at": "2021-06-14T17:44:26Z",
+                "url": "https://api.github.com/repos/slsa-framework/github-actions-demo",
+                "watchers": 0,
+                "watchers_count": 0
+              },
+              "sender": {
+                "avatar_url": "https://avatars.githubusercontent.com/u/1304826?v=4",
+                "events_url": "https://api.github.com/users/loosebazooka/events{/privacy}",
+                "followers_url": "https://api.github.com/users/loosebazooka/followers",
+                "following_url": "https://api.github.com/users/loosebazooka/following{/other_user}",
+                "gists_url": "https://api.github.com/users/loosebazooka/gists{/gist_id}",
+                "gravatar_id": "",
+                "html_url": "https://github.com/loosebazooka",
+                "id": 1304826,
+                "login": "loosebazooka",
+                "node_id": "MDQ6VXNlcjEzMDQ4MjY=",
+                "organizations_url": "https://api.github.com/users/loosebazooka/orgs",
+                "received_events_url": "https://api.github.com/users/loosebazooka/received_events",
+                "repos_url": "https://api.github.com/users/loosebazooka/repos",
+                "site_admin": false,
+                "starred_url": "https://api.github.com/users/loosebazooka/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/loosebazooka/subscriptions",
+                "type": "User",
+                "url": "https://api.github.com/users/loosebazooka"
+              },
+              "workflow": ".github/workflows/example-publish.yml"
+            },
+            "event_name": "workflow_dispatch",
+            "event_path": "/home/runner/work/_temp/_github_workflow/event.json",
+            "head_ref": "",
+            "job": "generate-provenance",
+            "ref": "refs/heads/main",
+            "repository": "slsa-framework/github-actions-demo",
+            "repository_owner": "slsa-framework",
+            "run_id": "936659519",
+            "run_number": "2",
+            "sha": "2b67dfb4e7b0bd04977d975afdafe0c76138aa1b",
+            "workflow": "Create a sample provenance",
+            "workspace": "/home/runner/work/github-actions-demo/github-actions-demo"
+          },
+          "runner": {
+            "os": "Linux",
+            "temp": "/home/runner/work/_temp",
+            "tool_cache": "/opt/hostedtoolcache"
+          }
+        }
+      },
+      "materials": [
+        {
+          "uri": "https://github.com/slsa-framework/github-actions-demo",
+          "digest": {
+            "sha1": "2b67dfb4e7b0bd04977d975afdafe0c76138aa1b"
+          }
+        }
+      ]
+    }
+  }

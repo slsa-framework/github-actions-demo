@@ -39,7 +39,7 @@ The GitHub action has the following user configuration
 
 | Input | Default | Description |
 | ----- | ------- | ----------- |
-|`artifact-path` | *`none`* | Path to build artifact or directory of build artifacts |
+|`artifact_path` | *`none`* | Path to build artifact or directory of build artifacts |
 |`output_path` | `build.provenance` | Path to write build provenance file |
 
 To try out this provenance generator, add the following snippet to your GitHub

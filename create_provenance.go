@@ -14,9 +14,9 @@ import (
 )
 
 const (
-	GitHubHostedId = "https://github.com/Attestations/GitHubHostedActions@v1"
-	SelfHostedId   = "https://github.com/Attestations/SelfHostedActions@v1"
-	TypeId         = "https://github.com/Attestations/GitHubActionsWorkflow@v1"
+	GitHubHostedIdSuffix = "/Attestations/GitHubHostedActions@v1"
+	SelfHostedIdSuffix   = "/Attestations/SelfHostedActions@v1"
+	TypeId               = "https://github.com/Attestations/GitHubActionsWorkflow@v1"
 )
 
 var (
@@ -33,8 +33,8 @@ type Statement struct {
 	Predicate     `json:"predicate"`
 }
 type Subject struct {
-	Name   string
-	Digest DigestSet
+	Name   string    `json:"name"`
+	Digest DigestSet `json:"digest"`
 }
 type Predicate struct {
 	Builder   `json:"builder"`
@@ -162,7 +162,7 @@ func parseFlags() {
 
 func main() {
 	parseFlags()
-	stmt := Statement{PredicateType: "https://in-toto.io/provenance/v0.1", Type: "https://in-toto.io/statement/v0.1"}
+	stmt := Statement{PredicateType: "https://in-toto.io/Provenance/v0.1", Type: "https://in-toto.io/Statement/v0.1"}
 	subjects, err := subjects(*artifactPath)
 	if os.IsNotExist(err) {
 		fmt.Println(fmt.Sprintf("Resource path not found: [provided=%s]", *artifactPath))
@@ -203,7 +203,8 @@ func main() {
 	// Remove access token from the generated provenance.
 	context.GitHubContext.Token = ""
 	// NOTE: Re-runs are not uniquely identified and can cause run ID collisions.
-	stmt.Predicate.Metadata.BuildInvocationId = gh.RunId
+	repoURI := "https://github.com/" + gh.Repository
+	stmt.Predicate.Metadata.BuildInvocationId = repoURI + "/actions/runs/" + gh.RunId
 	stmt.Predicate.Recipe.EntryPoint = gh.Workflow
 	stmt.Predicate.Recipe.Environment = context
 	event := AnyEvent{}
@@ -211,11 +212,11 @@ func main() {
 		panic(err)
 	}
 	stmt.Predicate.Recipe.Arguments = event.Input
-	stmt.Predicate.Materials = append(stmt.Predicate.Materials, Item{URI: "https://github.com/" + gh.Repository, Digest: DigestSet{"sha1": gh.SHA}})
+	stmt.Predicate.Materials = append(stmt.Predicate.Materials, Item{URI: "git+" + repoURI, Digest: DigestSet{"sha1": gh.SHA}})
 	if os.Getenv("GITHUB_ACTIONS") == "true" {
-		stmt.Predicate.Builder.Id = GitHubHostedId
+		stmt.Predicate.Builder.Id = repoURI + GitHubHostedIdSuffix
 	} else {
-		stmt.Predicate.Builder.Id = SelfHostedId
+		stmt.Predicate.Builder.Id = repoURI + SelfHostedIdSuffix
 	}
 	res, _ := json.MarshalIndent(stmt, "  ", "  ")
 	fmt.Println(string(res))

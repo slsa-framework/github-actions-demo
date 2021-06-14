@@ -30,5 +30,34 @@ such, we cannot make any commitments of future support.
 
 ## Example
 
+To see an example of the action... in action, see the [example](https://github.com/slsa-framework/github-actions-demo/blob/main/.github/workflows/example-publish.yml)
+in this repository.
+
+## Usage
+
+The GitHub action has the following user configuration
+
+| Input | Default | Description |
+| ----- | ------- | ----------- |
+|`artifact-path` | *`none`* | Path to build artifact or directory of build artifacts |
+|`output_path` | `build.provenance` | Path to write build provenance file |
+
 To try out this provenance generator, add the following snippet to your GitHub
 Actions workflow:
+
+```
+      - name: Generate provenance
+        uses: salsa-framework/github-actions-demo@v0.1
+        with:
+          artifact_path: <path-to-artifact>
+```
+In this example we use the default output path `build.provenance`, you can
+upload the build provenance to the workflow run result with the
+`actions/upload-artifact` github action
+```
+      - name: Upload provenance
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-provenance
+          path: build.provenance
+```

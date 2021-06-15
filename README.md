@@ -61,6 +61,6 @@ upload the build provenance to the workflow run result with the
       - name: Upload provenance
         uses: actions/upload-artifact@v2
         with:
-          name: build-provenance
+          name: my-artifact
           path: build.provenance
 ```

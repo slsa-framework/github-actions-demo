@@ -33,9 +33,10 @@ jobs:
         # use action in the root directory
         uses: ./
         with:
-          artifact_path: salsa.txt
+          artifact_path: artifact/
+          output_path: artifact/build.provenance
 
       - name: Upload provenance
         uses: actions/upload-artifact@v2
         with:
-          path: build.provenance
+          path: artifact/

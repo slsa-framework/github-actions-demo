@@ -182,11 +182,8 @@ func main() {
 		Builder{},
 		Metadata{
 			Completeness: Completeness{
-				Arguments: true,
-				// Environment description is considered fully described by the generated provenance.
-				// Context variables are the main dynamic aspect of builds and those are recorded.
-				// NOTE: Secrets aren't considered as env inputs in this model and so are omitted.
-				Environment: true,
+				Arguments:   true,
+				Environment: false,
 				Materials:   false,
 			},
 			Reproducible:    false,
@@ -213,7 +210,6 @@ func main() {
 	repoURI := "https://github.com/" + gh.Repository
 	stmt.Predicate.Metadata.BuildInvocationId = repoURI + "/actions/runs/" + gh.RunId
 	stmt.Predicate.Recipe.EntryPoint = gh.Workflow
-	stmt.Predicate.Recipe.Environment = context
 	event := AnyEvent{}
 	if err := json.Unmarshal(context.GitHubContext.Event, &event); err != nil {
 		panic(err)

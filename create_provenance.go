@@ -221,6 +221,9 @@ func main() {
 		stmt.Predicate.Builder.Id = repoURI + SelfHostedIdSuffix
 	}
 
+	// NOTE: At L1, writing the in-toto Statement type is sufficient but, at
+	// higher SLSA levels, the Statement must be encoded and wrapped in an
+	// Envelope to support attaching signatures.
 	payload, _ := json.MarshalIndent(stmt, "", "  ")
 	fmt.Println("Provenance:\n" + string(payload))
 	if err := ioutil.WriteFile(*outputPath, payload, 0755); err != nil {

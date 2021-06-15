@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/sha256"
+	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
 	"flag"
@@ -17,6 +18,7 @@ const (
 	GitHubHostedIdSuffix = "/Attestations/GitHubHostedActions@v1"
 	SelfHostedIdSuffix   = "/Attestations/SelfHostedActions@v1"
 	TypeId               = "https://github.com/Attestations/GitHubActionsWorkflow@v1"
+	PayloadContentType   = "application/vnd.in-toto+json"
 )
 
 var (
@@ -26,6 +28,11 @@ var (
 	runnerContext = flag.String("runner_context", "", "The '${runner}' context value.")
 )
 
+type Envelope struct {
+	PayloadType string        `json:"payloadType"`
+	Payload     string        `json:"payload"`
+	Signatures  []interface{} `json:"signatures"`
+}
 type Statement struct {
 	Type          string    `json:"_type"`
 	Subject       []Subject `json:"subject"`
@@ -218,10 +225,23 @@ func main() {
 	} else {
 		stmt.Predicate.Builder.Id = repoURI + SelfHostedIdSuffix
 	}
-	res, _ := json.MarshalIndent(stmt, "  ", "  ")
-	fmt.Println(string(res))
 
-	if err := ioutil.WriteFile(*outputPath, res, 0755); err != nil {
+	stmtPayload, _ := json.MarshalIndent(stmt, "  ", "  ")
+	fmt.Println("Payload:\n" + string(stmtPayload))
+	if err := ioutil.WriteFile(*outputPath+".payload", stmtPayload, 0755); err != nil {
+		fmt.Println("Failed to write provenance payload: %s", err)
+		os.Exit(1)
+	}
+
+	stmtCompactPayload, _ := json.Marshal(stmt)
+	envelope := Envelope{
+		PayloadType: PayloadContentType,
+		Payload:     base64.StdEncoding.EncodeToString(stmtCompactPayload),
+		Signatures:  []interface{}{},
+	}
+	envelopePayload, _ := json.MarshalIndent(envelope, "  ", "  ")
+	fmt.Println("Provenance:\n" + string(envelopePayload))
+	if err := ioutil.WriteFile(*outputPath, envelopePayload, 0755); err != nil {
 		fmt.Println("Failed to write provenance: %s", err)
 		os.Exit(1)
 	}

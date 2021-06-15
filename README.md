@@ -30,17 +30,19 @@ such, we cannot make any commitments of future support.
 
 ## Example
 
-To see an example of the action... in action, see the [example action](.github/workflows/example-publish.yml)
-and [example provenance](examples/build.provenance) in this repository.
+To see an example of the action... in action, see the
+[example action](.github/workflows/example-publish.yml) and
+[example provenance](examples/build.provenance) (and the human-readable
+[provenance payload](examples/build.provenance.payload)) in this repository.
 
 ## Usage
 
 The GitHub action has the following user configuration
 
-| Input | Default | Description |
-| ----- | ------- | ----------- |
-|`artifact_path` | *`none`* | Path to build artifact or directory of build artifacts |
-|`output_path` | `build.provenance` | Path to write build provenance file |
+| Input           | Default            | Description                                            |
+| --------------- | ------------------ | ------------------------------------------------------ |
+| `artifact_path` | *`none`*           | Path to build artifact or directory of build artifacts |
+| `output_path`   | `build.provenance` | Path to write build provenance file                    |
 
 To try out this provenance generator, add the following snippet to your GitHub
 Actions workflow:
@@ -51,9 +53,11 @@ Actions workflow:
         with:
           artifact_path: <path-to-artifact>
 ```
+
 In this example we use the default output path `build.provenance`, you can
 upload the build provenance to the workflow run result with the
 `actions/upload-artifact` github action
+
 ```
       - name: Upload provenance
         uses: actions/upload-artifact@v2

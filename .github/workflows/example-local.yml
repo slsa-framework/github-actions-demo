@@ -11,7 +11,7 @@ jobs:
       # traditionally you would build your code here and generate an artifact
       - name: Create artifact
         run:  echo "onion, tomato, jalapeno, cilantro, lime, salt" > salsa.txt
-        
+
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
@@ -34,7 +34,7 @@ jobs:
 
       - name: Generate provenance
         # use action in the root directory
-        uses: ./ 
+        uses: ./
         with:
           artifact_path: salsa.txt
 
@@ -42,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build-provenance
-          path: build.provenance
+          path: build.provenance*

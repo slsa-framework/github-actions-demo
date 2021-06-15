@@ -208,6 +208,8 @@ func main() {
 	// NOTE: Re-runs are not uniquely identified and can cause run ID collisions.
 	repoURI := "https://github.com/" + gh.Repository
 	stmt.Predicate.Metadata.BuildInvocationId = repoURI + "/actions/runs/" + gh.RunId
+	// NOTE: This is inexact as multiple workflows in a repo can have the same name.
+	// See https://github.com/github/feedback/discussions/4188
 	stmt.Predicate.Recipe.EntryPoint = gh.Workflow
 	event := AnyEvent{}
 	if err := json.Unmarshal(context.GitHubContext.Event, &event); err != nil {

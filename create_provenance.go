@@ -222,7 +222,7 @@ func main() {
 		stmt.Predicate.Builder.Id = repoURI + SelfHostedIdSuffix
 	}
 
-	stmtPayload, _ := json.MarshalIndent(stmt, "  ", "  ")
+	stmtPayload, _ := json.MarshalIndent(stmt, "", "  ")
 	fmt.Println("Payload:\n" + string(stmtPayload))
 	if err := ioutil.WriteFile(*outputPath+".payload", stmtPayload, 0755); err != nil {
 		fmt.Println("Failed to write provenance payload: %s", err)
@@ -235,7 +235,7 @@ func main() {
 		Payload:     base64.StdEncoding.EncodeToString(stmtCompactPayload),
 		Signatures:  []interface{}{},
 	}
-	envelopePayload, _ := json.MarshalIndent(envelope, "  ", "  ")
+	envelopePayload, _ := json.MarshalIndent(envelope, "", "  ")
 	fmt.Println("Provenance:\n" + string(envelopePayload))
 	if err := ioutil.WriteFile(*outputPath, envelopePayload, 0755); err != nil {
 		fmt.Println("Failed to write provenance: %s", err)

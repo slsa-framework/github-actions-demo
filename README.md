@@ -32,8 +32,7 @@ such, we cannot make any commitments of future support.
 
 To see an example of the action... in action, see the
 [example action](.github/workflows/example-publish.yml) and
-[example provenance](examples/build.provenance) (and the human-readable
-[provenance payload](examples/build.provenance.payload)) in this repository.
+[example provenance](examples/build.provenance) in this repository.
 
 ## Usage
 
@@ -43,8 +42,6 @@ The GitHub action has the following user configuration
 | --------------- | ------------------ | ------------------------------------------------------ |
 | `artifact_path` | *`none`*           | Path to build artifact or directory of build artifacts |
 | `output_path`   | `build.provenance` | Path to write build provenance file                    |
-
-NOTE: The action also writes the human-readable provenance payload to `${output_path}.payload`.
 
 To try out this provenance generator, add the following snippet to your GitHub
 Actions workflow:

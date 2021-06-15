@@ -64,7 +64,7 @@ type Recipe struct {
 	DefinedInMaterial int             `json:"definedInMaterial"`
 	EntryPoint        string          `json:"entryPoint"`
 	Arguments         json.RawMessage `json:"arguments"`
-	Environment       AnyContext      `json:"environment"`
+	Environment       AnyContext      `json:"environment,omitempty"`
 }
 type Completeness struct {
 	Arguments   bool `json:"arguments"`

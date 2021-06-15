@@ -15,7 +15,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: build-artifact
           path: salsa.txt
 
   generate-provenance:
@@ -25,8 +24,6 @@ jobs:
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v2
-        with:
-          name: build-artifact
 
       - name: Generate provenance
         uses: slsa-framework/github-actions-demo@v0.1
@@ -36,5 +33,4 @@ jobs:
       - name: Upload provenance
         uses: actions/upload-artifact@v2
         with:
-          name: build-provenance
           path: build.provenance

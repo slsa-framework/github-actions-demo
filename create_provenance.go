@@ -110,7 +110,7 @@ type RunnerContext struct {
 // The only Event with dynamically-provided input is workflow_dispatch which
 // exposes the user params at the key "input."
 type AnyEvent struct {
-	Input json.RawMessage `json:"input"`
+	Inputs json.RawMessage `json:"inputs"`
 }
 
 // subjects walks the file or directory at "root" and hashes all files.
@@ -213,7 +213,7 @@ func main() {
 	if err := json.Unmarshal(context.GitHubContext.Event, &event); err != nil {
 		panic(err)
 	}
-	stmt.Predicate.Recipe.Arguments = event.Input
+	stmt.Predicate.Recipe.Arguments = event.Inputs
 	stmt.Predicate.Materials = append(stmt.Predicate.Materials, Item{URI: "git+" + repoURI, Digest: DigestSet{"sha1": gh.SHA}})
 	if os.Getenv("GITHUB_ACTIONS") == "true" {
 		stmt.Predicate.Builder.Id = repoURI + GitHubHostedIdSuffix

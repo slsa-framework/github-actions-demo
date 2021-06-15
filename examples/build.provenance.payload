@@ -14,52 +14,27 @@
       "id": "https://github.com/slsa-framework/github-actions-demo/Attestations/GitHubHostedActions@v1"
     },
     "metadata": {
-      "buildInvocationId": "https://github.com/slsa-framework/github-actions-demo/actions/runs/940098885",
+      "buildInvocationId": "https://github.com/slsa-framework/github-actions-demo/actions/runs/940146003",
       "completeness": {
         "arguments": true,
         "environment": false,
         "materials": false
       },
       "reproducible": false,
-      "buildFinishedOn": "2021-06-15T17:06:09Z"
+      "buildFinishedOn": "2021-06-15T17:24:42Z"
     },
     "recipe": {
       "type": "https://github.com/Attestations/GitHubActionsWorkflow@v1",
       "definedInMaterial": 0,
       "entryPoint": "Create a sample provenance",
       "arguments": null,
-      "environment": {
-        "github": {
-          "action": "",
-          "action_path": "",
-          "actor": "",
-          "base_ref": "",
-          "event": null,
-          "event_name": "",
-          "event_path": "",
-          "head_ref": "",
-          "job": "",
-          "ref": "",
-          "repository": "",
-          "repository_owner": "",
-          "run_id": "",
-          "run_number": "",
-          "sha": "",
-          "workflow": "",
-          "workspace": ""
-        },
-        "runner": {
-          "os": "",
-          "temp": "",
-          "tool_cache": ""
-        }
-      }
+      "environment": null
     },
     "materials": [
       {
         "uri": "git+https://github.com/slsa-framework/github-actions-demo",
         "digest": {
-          "sha1": "965e188bf1817b75b19c2fd8ca85536bc783c707"
+          "sha1": "86439f2a3f6e2bddb608860b1895310a9fcb06a1"
         }
       }
     ]

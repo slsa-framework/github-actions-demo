@@ -44,6 +44,8 @@ The GitHub action has the following user configuration
 | `artifact_path` | *`none`*           | Path to build artifact or directory of build artifacts |
 | `output_path`   | `build.provenance` | Path to write build provenance file                    |
 
+NOTE: The action also writes the human-readable provenance payload to `${output_path}.payload`.
+
 To try out this provenance generator, add the following snippet to your GitHub
 Actions workflow:
 

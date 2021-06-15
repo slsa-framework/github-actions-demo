@@ -23,7 +23,7 @@ const (
 
 var (
 	artifactPath  = flag.String("artifact_path", "", "The file or dir path of the artifacts for which provenance should be generated.")
-	outputPath    = flag.String("output_path", "build.provenance", "The path to which the generated provenance should be written.")
+	outputPath    = flag.String("output_path", "build.provenance", "The path to which the generated provenance should be written. The human-readable provenance payload will also be written to this path suffixed with '.payload'.")
 	githubContext = flag.String("github_context", "", "The '${github}' context value.")
 	runnerContext = flag.String("runner_context", "", "The '${runner}' context value.")
 )

@@ -34,9 +34,8 @@ jobs:
         uses: ./
         with:
           artifact_path: artifact/
-          output_path: artifact/build.provenance
 
       - name: Upload provenance
         uses: actions/upload-artifact@v2
         with:
-          path: artifact/
+          path: build.provenance

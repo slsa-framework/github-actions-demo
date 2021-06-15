@@ -2,7 +2,6 @@ package main
 
 import (
 	"crypto/sha256"
-	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
 	"flag"
@@ -23,7 +22,7 @@ const (
 
 var (
 	artifactPath  = flag.String("artifact_path", "", "The file or dir path of the artifacts for which provenance should be generated.")
-	outputPath    = flag.String("output_path", "build.provenance", "The path to which the generated provenance should be written. The human-readable provenance payload will also be written to this path suffixed with '.payload'.")
+	outputPath    = flag.String("output_path", "build.provenance", "The path to which the generated provenance should be written.")
 	githubContext = flag.String("github_context", "", "The '${github}' context value.")
 	runnerContext = flag.String("runner_context", "", "The '${runner}' context value.")
 )
@@ -222,22 +221,12 @@ func main() {
 		stmt.Predicate.Builder.Id = repoURI + SelfHostedIdSuffix
 	}
 
-	stmtPayload, _ := json.MarshalIndent(stmt, "", "  ")
-	fmt.Println("Payload:\n" + string(stmtPayload))
-	if err := ioutil.WriteFile(*outputPath+".payload", stmtPayload, 0755); err != nil {
-		fmt.Println("Failed to write provenance payload: %s", err)
-		os.Exit(1)
-	}
-
-	stmtCompactPayload, _ := json.Marshal(stmt)
-	envelope := Envelope{
-		PayloadType: PayloadContentType,
-		Payload:     base64.StdEncoding.EncodeToString(stmtCompactPayload),
-		Signatures:  []interface{}{},
-	}
-	envelopePayload, _ := json.MarshalIndent(envelope, "", "  ")
-	fmt.Println("Provenance:\n" + string(envelopePayload))
-	if err := ioutil.WriteFile(*outputPath, envelopePayload, 0755); err != nil {
+	// NOTE: At L1, writing the in-toto Statement type is sufficient but, at
+	// higher SLSA levels, the Statement must be encoded and wrapped in an
+	// Envelope to support attaching signatures.
+	payload, _ := json.MarshalIndent(stmt, "", "  ")
+	fmt.Println("Provenance:\n" + string(payload))
+	if err := ioutil.WriteFile(*outputPath, payload, 0755); err != nil {
 		fmt.Println("Failed to write provenance: %s", err)
 		os.Exit(1)
 	}

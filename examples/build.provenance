@@ -1,5 +1,42 @@
 {
-  "payloadType": "application/vnd.in-toto+json",
-  "payload": "eyJfdHlwZSI6Imh0dHBzOi8vaW4tdG90by5pby9TdGF0ZW1lbnQvdjAuMSIsInN1YmplY3QiOlt7Im5hbWUiOiJzYWxzYS50eHQiLCJkaWdlc3QiOnsic2hhMjU2IjoiZjgxNjFkMDM1Y2RmMzI4YzdiYjEyNGZjZTE5MmNiOTBiNjAzZjM0Y2E3OGQ3M2UzM2I3MzZiNGY2YmRkZjk5MyJ9fV0sInByZWRpY2F0ZVR5cGUiOiJodHRwczovL2luLXRvdG8uaW8vUHJvdmVuYW5jZS92MC4xIiwicHJlZGljYXRlIjp7ImJ1aWxkZXIiOnsiaWQiOiJodHRwczovL2dpdGh1Yi5jb20vc2xzYS1mcmFtZXdvcmsvZ2l0aHViLWFjdGlvbnMtZGVtby9BdHRlc3RhdGlvbnMvR2l0SHViSG9zdGVkQWN0aW9uc0B2MSJ9LCJtZXRhZGF0YSI6eyJidWlsZEludm9jYXRpb25JZCI6Imh0dHBzOi8vZ2l0aHViLmNvbS9zbHNhLWZyYW1ld29yay9naXRodWItYWN0aW9ucy1kZW1vL2FjdGlvbnMvcnVucy85NDAxNDYwMDMiLCJjb21wbGV0ZW5lc3MiOnsiYXJndW1lbnRzIjp0cnVlLCJlbnZpcm9ubWVudCI6ZmFsc2UsIm1hdGVyaWFscyI6ZmFsc2V9LCJyZXByb2R1Y2libGUiOmZhbHNlLCJidWlsZEZpbmlzaGVkT24iOiIyMDIxLTA2LTE1VDE3OjI0OjQyWiJ9LCJyZWNpcGUiOnsidHlwZSI6Imh0dHBzOi8vZ2l0aHViLmNvbS9BdHRlc3RhdGlvbnMvR2l0SHViQWN0aW9uc1dvcmtmbG93QHYxIiwiZGVmaW5lZEluTWF0ZXJpYWwiOjAsImVudHJ5UG9pbnQiOiJDcmVhdGUgYSBzYW1wbGUgcHJvdmVuYW5jZSIsImFyZ3VtZW50cyI6bnVsbCwiZW52aXJvbm1lbnQiOm51bGx9LCJtYXRlcmlhbHMiOlt7InVyaSI6ImdpdCtodHRwczovL2dpdGh1Yi5jb20vc2xzYS1mcmFtZXdvcmsvZ2l0aHViLWFjdGlvbnMtZGVtbyIsImRpZ2VzdCI6eyJzaGExIjoiODY0MzlmMmEzZjZlMmJkZGI2MDg4NjBiMTg5NTMxMGE5ZmNiMDZhMSJ9fV19fQ==",
-  "signatures": []
+  "_type": "https://in-toto.io/Statement/v0.1",
+  "subject": [
+    {
+      "name": "salsa.txt",
+      "digest": {
+        "sha256": "f8161d035cdf328c7bb124fce192cb90b603f34ca78d73e33b736b4f6bddf993"
+      }
+    }
+  ],
+  "predicateType": "https://in-toto.io/Provenance/v0.1",
+  "predicate": {
+    "builder": {
+      "id": "https://github.com/slsa-framework/github-actions-demo/Attestations/GitHubHostedActions@v1"
+    },
+    "metadata": {
+      "buildInvocationId": "https://github.com/slsa-framework/github-actions-demo/actions/runs/940146003",
+      "completeness": {
+        "arguments": true,
+        "environment": false,
+        "materials": false
+      },
+      "reproducible": false,
+      "buildFinishedOn": "2021-06-15T17:24:42Z"
+    },
+    "recipe": {
+      "type": "https://github.com/Attestations/GitHubActionsWorkflow@v1",
+      "definedInMaterial": 0,
+      "entryPoint": "Create a sample provenance",
+      "arguments": null,
+      "environment": null
+    },
+    "materials": [
+      {
+        "uri": "git+https://github.com/slsa-framework/github-actions-demo",
+        "digest": {
+          "sha1": "86439f2a3f6e2bddb608860b1895310a9fcb06a1"
+        }
+      }
+    ]
+  }
 }

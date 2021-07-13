@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"io/fs"
@@ -115,6 +116,25 @@ type AnyEvent struct {
 
 // subjects walks the file or directory at "root" and hashes all files.
 func subjects(root string) ([]Subject, error) {
+	// Check for broken symlinks along the root path.
+	parents := []string{root}
+	for {
+		dir, _ := filepath.Split(parents[0])
+		if dir == "" {
+			break
+		}
+		parents = append([]string{filepath.Clean(dir)}, parents...)
+	}
+	for _, parent := range parents {
+		if _, err := os.Stat(parent); err != nil {
+			if path, _ := os.Readlink(parent); path != "" && os.IsNotExist(err) {
+				return nil, errors.New("stat " + parent + ": broken symlink")
+			} else {
+				return nil, err
+			}
+		}
+	}
+	// Walk root path for subjects.
 	var s []Subject
 	return s, filepath.Walk(root, func(abspath string, info fs.FileInfo, err error) error {
 		if err != nil {
@@ -170,11 +190,9 @@ func main() {
 	parseFlags()
 	stmt := Statement{PredicateType: "https://in-toto.io/Provenance/v0.1", Type: "https://in-toto.io/Statement/v0.1"}
 	subjects, err := subjects(*artifactPath)
-	if os.IsNotExist(err) {
-		fmt.Println(fmt.Sprintf("Resource path not found: [provided=%s]", *artifactPath))
+	if err != nil {
+		fmt.Println(err)
 		os.Exit(1)
-	} else if err != nil {
-		panic(err)
 	}
 	stmt.Subject = append(stmt.Subject, subjects...)
 	stmt.Predicate = Predicate{

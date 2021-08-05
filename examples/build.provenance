@@ -8,7 +8,7 @@
       }
     }
   ],
-  "predicateType": "https://in-toto.io/Provenance/v0.1",
+  "predicateType": "https://slsa.dev/provenance/v0.1",
   "predicate": {
     "builder": {
       "id": "https://github.com/slsa-framework/github-actions-demo/Attestations/GitHubHostedActions@v1"

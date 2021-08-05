@@ -168,7 +168,7 @@ func parseFlags() {
 
 func main() {
 	parseFlags()
-	stmt := Statement{PredicateType: "https://in-toto.io/Provenance/v0.1", Type: "https://in-toto.io/Statement/v0.1"}
+	stmt := Statement{PredicateType: "https://slsa.dev/provenance/v0.1", Type: "https://in-toto.io/Statement/v0.1"}
 	subjects, err := subjects(*artifactPath)
 	if os.IsNotExist(err) {
 		fmt.Println(fmt.Sprintf("Resource path not found: [provided=%s]", *artifactPath))

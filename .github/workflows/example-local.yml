@@ -15,6 +15,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
+          name: salsa.txt
           path: salsa.txt
 
   generate-provenance:
@@ -38,4 +39,5 @@ jobs:
       - name: Upload provenance
         uses: actions/upload-artifact@v2
         with:
+          name: build.provenance
           path: build.provenance

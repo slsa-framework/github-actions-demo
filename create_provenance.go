@@ -25,6 +25,7 @@ var (
 	outputPath    = flag.String("output_path", "build.provenance", "The path to which the generated provenance should be written.")
 	githubContext = flag.String("github_context", "", "The '${github}' context value.")
 	runnerContext = flag.String("runner_context", "", "The '${runner}' context value.")
+	extraMaterial = flag.String("extra_material", "", "Files with extra materials as in-toto data to add.")
 )
 
 type Envelope struct {
@@ -166,6 +167,18 @@ func parseFlags() {
 	}
 }
 
+func getExtraMaterials(filename string) ([]Item, error) {
+	content, err := ioutil.ReadFile(filename)
+	var ret []Item
+	if err != nil {
+		return ret, err
+	}
+	if err = json.Unmarshal(content, &ret); err != nil {
+		return ret, err
+	}
+	return ret, nil
+}
+
 func main() {
 	parseFlags()
 	stmt := Statement{PredicateType: "https://slsa.dev/provenance/v0.1", Type: "https://in-toto.io/Statement/v0.1"}
@@ -202,6 +215,10 @@ func main() {
 	if err := json.Unmarshal([]byte(*runnerContext), &context.RunnerContext); err != nil {
 		panic(err)
 	}
+	var extraMaterials []string
+	if err := json.Unmarshal([]byte(*extraMaterial), &extraMaterials); err != nil {
+		panic(err)
+	}
 	gh := context.GitHubContext
 	// Remove access token from the generated provenance.
 	context.GitHubContext.Token = ""
@@ -217,6 +234,13 @@ func main() {
 	}
 	stmt.Predicate.Recipe.Arguments = event.Inputs
 	stmt.Predicate.Materials = append(stmt.Predicate.Materials, Item{URI: "git+" + repoURI, Digest: DigestSet{"sha1": gh.SHA}})
+	for _, filename := range extraMaterials {
+		infos, err := getExtraMaterials(filename)
+		if err != nil {
+			panic(err)
+		}
+		stmt.Predicate.Materials = append(stmt.Predicate.Materials, infos...)
+	}
 	if os.Getenv("GITHUB_ACTIONS") == "true" {
 		stmt.Predicate.Builder.Id = repoURI + GitHubHostedIdSuffix
 	} else {

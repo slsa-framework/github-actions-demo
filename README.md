@@ -1,3 +1,5 @@
+:warning: **This repository is deprecated. Please see [slsa-github-generator](https://github.com/slsa-framework/slsa-github-generator) for a more complete solution for GitHub Actions.** :warning:
+
 # SLSA GitHub Actions Demo
 
 A proof-of-concept SLSA provenance generator for GitHub Actions.

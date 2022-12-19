@@ -19,6 +19,9 @@ inputs:
     description: 'internal (do not set): the "runner" context object in json'
     required: true
     default: ${{ toJSON(runner) }}
+  extra_material:
+    description: 'Paths to JSON files with extra materials for inclusion into the provenance'
+    default: '[]'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -31,3 +34,5 @@ runs:
     - '${{ inputs.github_context }}'
     - "--runner_context"
     - '${{ inputs.runner_context }}'
+    - "--extra_material"
+    - '${{ inputs.extra_material }}'

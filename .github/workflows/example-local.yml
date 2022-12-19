@@ -12,10 +12,20 @@ jobs:
       - name: Create artifact
         run:  echo "onion, tomato, jalapeno, cilantro, lime, salt" > salsa.txt
 
+      # traditionally, the build code would generate this
+      - name: Create extra materials
+        run: |
+          echo '[{"uri": "pkg:deb/debian/stunnel4@5.50-3?arch=amd64", "digest": {"sha256": "e1731ae217fcbc64d4c00d707dcead45c828c5f762bcf8cc56d87de511e096fa"}}]' > extra-materials
+
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           path: salsa.txt
+
+      - name: Upload extra materials
+        uses: actions/upload-artifact@v2
+        with:
+          path: extra-materials
 
   generate-provenance:
     needs: build
@@ -34,6 +44,7 @@ jobs:
         uses: ./
         with:
           artifact_path: artifact/
+          extra_material: '["artifact/extra-materials"]'
 
       - name: Upload provenance
         uses: actions/upload-artifact@v2
